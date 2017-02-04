@@ -2,19 +2,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Anna on 02.02.2017.
  */
-public class customers {
+public class Customers {
     private int orderId;
     private String name;
     private int fone_number;
     private String home_adress;
 
-    public customers(int orderId, String name, int fone_number, String home_adress) {
+    public Customers(int orderId, String name, int fone_number, String home_adress) {
         this.orderId = orderId;
         this.name = name;
         this.fone_number = fone_number;
@@ -49,7 +47,7 @@ public class customers {
     public static void wholeCustomers() throws SQLException {
         PreparedStatement ps = null;
         try {
-            ps = dbProperties.getConn().prepareStatement("SELECT * FROM clients");
+            ps = DbProperties.getConn().prepareStatement("SELECT * FROM clients");
             setResult(ps);
 
         } catch (SQLException e) {
@@ -65,7 +63,7 @@ public class customers {
         String result = "";
         PreparedStatement ps = null;
                try {
-                ps = dbProperties.getConn().prepareStatement("INSERT INTO clients (orderId, name, fone_number, home_adress) VALUES (?,?,?,?)");
+                ps = DbProperties.getConn().prepareStatement("INSERT INTO clients (orderId, name, fone_number, home_adress) VALUES (?,?,?,?)");
                 ps.setInt(1, orderId);
                 ps.setString(2, name);
                 ps.setInt(3, fone_number);

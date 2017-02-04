@@ -5,14 +5,14 @@ import java.util.List;
 /**
  * Created by Anna on 02.02.2017.
  */
-public class products {
+public class Products {
 private int id;
 private String product_name;
 private int amount;
 private double price;
 
 
-      public products(int id, String product_name, int amount, double price) {
+      public Products(int id, String product_name, int amount, double price) {
         this.id = id;
         this.product_name = product_name;
         this.amount = amount;
@@ -42,7 +42,7 @@ private double price;
     public static void wholeRangeOfProducts() throws SQLException {
         PreparedStatement ps = null;
         try {
-            ps = dbProperties.getConn().prepareStatement("SELECT * FROM products");
+            ps = DbProperties.getConn().prepareStatement("SELECT * FROM products");
             setResult(ps);
 
         } catch (SQLException e) {
@@ -59,7 +59,7 @@ private double price;
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
-            ps = dbProperties.getConn().prepareStatement("SELECT * FROM Products WHERE id = ? or product_name = ?");
+            ps = DbProperties.getConn().prepareStatement("SELECT * FROM Products WHERE id = ? or product_name = ?");
             ps.setInt(1, id);
             ps.setString(2, product_name);
             try {
@@ -96,7 +96,7 @@ private double price;
         List<String> resultGet = getProduct(id, product_name);
           if (!resultGet.isEmpty()) {
               //update
-              ps = dbProperties.conn.prepareStatement("UPDATE Product SET amount = ? WHERE id = ?");
+              ps = DbProperties.conn.prepareStatement("UPDATE Product SET amount = ? WHERE id = ?");
               try {
                   ps.setInt(1, amount);
                   ps.setInt(2, id);
@@ -107,7 +107,7 @@ private double price;
           }else{
               //insert
                 try {
-                  ps = dbProperties.getConn().prepareStatement("INSERT INTO Products (id, product_name, amount, price) VALUES (?,?,?,?)");
+                  ps = DbProperties.getConn().prepareStatement("INSERT INTO Products (id, product_name, amount, price) VALUES (?,?,?,?)");
                   ps.setInt(1, id);
                   ps.setString(2, product_name);
                   ps.setInt(3, amount);

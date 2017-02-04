@@ -5,7 +5,7 @@ import java.sql.SQLException;
 /**
  * Created by Anna on 02.02.2017.
  */
-public class dbProperties{
+public class DbProperties {
     static final String DB_CONNECTION = "jdbc:mysql://localhost:3306/flats";
     static final String DB_USER = "root";
     static final String DB_PASSWORD = "anna4e";

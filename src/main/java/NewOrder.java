@@ -5,7 +5,7 @@ import java.util.UUID;
 /**
  * Created by Anna on 02.02.2017.
  */
-public class newOrder {
+public class NewOrder {
 
     private static int orderId;
     private static String customer;
@@ -23,14 +23,14 @@ public class newOrder {
         String string = sc.nextLine();
         productId = Integer.parseInt(string);
         product_name = string;
-        String [] product = (String[]) products.getProduct(productId, product_name).toArray();
+        String [] product = (String[]) Products.getProduct(productId, product_name).toArray();
         int amount = Integer.parseInt(product[2]);
         if (amount > 0) {
             amount--;
             productId = Integer.parseInt(product[0]);
             product_name = product[1];
             price = Double.parseDouble(product[3]);
-            products.addProduct(productId, product_name, amount, price);
+            Products.addProduct(productId, product_name, amount, price);
             System.out.println("Enter customer name:");
             string = sc.nextLine();
             customer = string;
@@ -40,8 +40,8 @@ public class newOrder {
             System.out.println("Enter customer home_adress:");
             string = sc.nextLine();
             String home_adress = string;
-            customers.addCustomer(orderId, customer, customerId, home_adress);
-            orders.addOrder(orderId, customer, customerId, product_name,
+            Customers.addCustomer(orderId, customer, customerId, home_adress);
+            Orders.addOrder(orderId, customer, customerId, product_name,
                     productId, price);
 
         }else{
@@ -51,7 +51,7 @@ public class newOrder {
 
     }
 
-    public newOrder() {
+    public NewOrder() {
 
     }
 

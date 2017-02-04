@@ -1,5 +1,3 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -14,27 +12,27 @@ public class Main {
         try {
             try {
                 // connection
-                dbProperties.getConn();
+                DbProperties.getConn();
                      while (true) {
                     System.out.println("1: new order");
-                    System.out.println("2: show all products");
+                    System.out.println("2: show all Products");
                     System.out.println("3: show all customers");
-                    System.out.println("4: show all orders");
+                    System.out.println("4: show all Orders");
                      System.out.println("5: add new product or change info of product");
                     String param = sc.nextLine();
 
 
                     if (param.equals("1")) {
-                        new newOrder();
+                        new NewOrder();
                     }
                     else if (param.equals("2")) {
-                        products.wholeRangeOfProducts();
+                        Products.wholeRangeOfProducts();
 
                     } else if (param.equals("3")) {
-                       customers.wholeCustomers();
+                       Customers.wholeCustomers();
 
                     } else if (param.equals("4")) {
-                        orders.wholeRangeOfOrders();
+                        Orders.wholeRangeOfOrders();
 
                     }  else if (param.equals("5")) {
                         System.out.println("Enter product ID");
@@ -49,7 +47,7 @@ public class Main {
                         System.out.println("Enter the price");
                         string = sc.nextLine();
                         double price = Double.parseDouble(string);
-                        products.addProduct(id, product_name, amount, price);
+                        Products.addProduct(id, product_name, amount, price);
 
                     } else {
                         return;
@@ -57,9 +55,9 @@ public class Main {
                 }
             } finally {
                 sc.close();
-                if (dbProperties.conn != null){
+                if (DbProperties.conn != null){
 
-                    dbProperties.conn.close();
+                    DbProperties.conn.close();
                 };
             }
         } catch (SQLException ex) {

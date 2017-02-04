@@ -2,13 +2,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Anna on 02.02.2017.
  */
-public class orders {
+public class Orders {
         private int orderId;
         private String customer;
         private int customerId;
@@ -16,7 +14,7 @@ public class orders {
         private int productId;
         private double price;
 
-    public orders(int orderId, String customer, int customerId, String product_name, int productId, double price) {
+    public Orders(int orderId, String customer, int customerId, String product_name, int productId, double price) {
         this.orderId = orderId;
         this.customer = customer;
         this.customerId = customerId;
@@ -58,7 +56,7 @@ public class orders {
         public static void wholeRangeOfOrders() throws SQLException {
             PreparedStatement ps = null;
             try {
-                ps = dbProperties.getConn().prepareStatement("SELECT * FROM orders");
+                ps = DbProperties.getConn().prepareStatement("SELECT * FROM orders");
                 setResult(ps);
 
             } catch (SQLException e) {
@@ -77,7 +75,7 @@ public class orders {
             PreparedStatement ps = null;
             //insert
                 try {
-                    ps = dbProperties.getConn().prepareStatement("INSERT INTO Orders(orderId, customer, customerId, product_name, productId, price) VALUES (?,?,?,?,?,?)");
+                    ps = DbProperties.getConn().prepareStatement("INSERT INTO Orders(orderId, customer, customerId, product_name, productId, price) VALUES (?,?,?,?,?,?)");
                     ps.setInt(1, orderId);
                     ps.setString(2, customer);
                     ps.setInt(3, customerId);
